@@ -12,7 +12,7 @@
 ### Как submodule (для совместной разработки)
 
 ```bash
-git submodule add https://github.com/i1SLOWFire/json-storage.git libs/json_storage
+git submodule add https://github.com/i1slowfire/json-storage.git libs/json_storage
 ```
 
 Импорт (если вы оставили папку libs/json_storage):
