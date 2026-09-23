@@ -12,7 +12,7 @@ class JSONStorage:
         """
         self.filename = filename
         self.item_class = item_class
-        self.items = []
+        self.items = None
 
     def __getitem__(self, index):
         return self.items[index]
