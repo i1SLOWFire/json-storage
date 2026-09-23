@@ -30,22 +30,10 @@ class TestJSONStorage(unittest.TestCase):
         if os.path.exists(self.test_file):
             os.remove(self.test_file)
 
-    def test_load(self):
-        pass
-
-    def test_load_item_class_is_none(self):
-        pass
-
     def test_load_none_items(self):
         self.assertEqual(self.test_storage.items, None)
         self.test_storage.load()
         self.assertEqual(self.test_storage.items, [])
-
-    def test_save(self):
-        pass
-
-    def test_save_item_class_is_none(self):
-        pass
 
     def test_add_item(self):
         self.assertEqual(self.test_storage.items, None)
@@ -55,6 +43,15 @@ class TestJSONStorage(unittest.TestCase):
         self.test_storage.add_item(self.test_item2.to_dict())
         self.assertEqual(self.test_storage.items[0], {"id": 1, "title": "test1"})
         self.assertEqual(self.test_storage.items[1], {"id": 2, "title": "test2"})
+
+    def test_remove_item(self):
+        self.test_storage.load()
+        self.test_storage.add_item(self.test_item1.to_dict())
+        self.test_storage.add_item(self.test_item2.to_dict())
+        self.assertEqual(self.test_storage.items, [{"id": 1, "title": "test1"}, {"id": 2, "title": "test2"}])
+        self.test_storage.remove_item(self.test_item1.to_dict())
+        self.assertEqual(self.test_storage.items[0], {"id": 2, "title": "test2"})
+
 
 if __name__ == '__main__':
     unittest.main()
