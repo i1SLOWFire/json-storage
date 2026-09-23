@@ -52,6 +52,13 @@ class TestJSONStorage(unittest.TestCase):
         self.test_storage.remove_item(self.test_item1.to_dict())
         self.assertEqual(self.test_storage.items[0], {"id": 2, "title": "test2"})
 
+    def test_clear(self):
+        self.test_storage.load()
+        self.test_storage.add_item(self.test_item1.to_dict())
+        self.test_storage.add_item(self.test_item2.to_dict())
+        self.assertEqual(self.test_storage.items, [{"id": 1, "title": "test1"}, {"id": 2, "title": "test2"}])
+        self.test_storage.clear()
+        self.assertEqual(self.test_storage.items, [])
 
 if __name__ == '__main__':
     unittest.main()
